@@ -28,6 +28,6 @@
             num_cpus: 4
             osid: centos64Guest
             scsi: paravirtual
-        vm_cdrom:
-            type: "iso"
-            iso_path: "[xvdstrlun01] ISO/rhel-server-7.4-x86_64-dvd.iso"
+      cdrom:
+          type: "iso"
+          iso_path: "[xvdstrlun01] ISO/rhel-server-7.4-x86_64-dvd.iso"

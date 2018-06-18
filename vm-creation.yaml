@@ -16,18 +16,18 @@
       password: Xvale123
       name: testvm01
       disk:
-        - size_gb: 10 
-          type: thin
-          datastore: xvdstrlun01
+        size_gb: 10 
+        type: thin
+        datastore: xvdstrlun01
       nic:
         type: vmxnet3
         network: "{{ network }}"
         network_type: standard
       hardware:
-            memory_mb: 16000
-            num_cpus: 4
-            osid: centos64Guest
-            scsi: paravirtual
+        memory_mb: 16000
+        num_cpus: 4
+        osid: centos64Guest
+        scsi: paravirtual
       cdrom:
-          type: "iso"
-          iso_path: "[xvdstrlun01] ISO/rhel-server-7.4-x86_64-dvd.iso"
+        type: "iso"
+        iso_path: "[xvdstrlun01] ISO/rhel-server-7.4-x86_64-dvd.iso"

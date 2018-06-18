@@ -1,37 +1,33 @@
 ---
-- hosts: all
+- name: VM From Template
+  hosts: vmcreate
   gather_facts: false
-  task:
-  - vsphere_guest:
-        vcenter_hostname: vcenter.mydomain.local
-        username: myuser
-        password: mypass
-        guest: newvm001
-        state: powered_on
-        vm_extra_config:
-            vcpu.hotadd: yes
-            mem.hotadd:  yes
-            notes: This is a test VM
-            folder: MyFolder
-        vm_disk:
-            disk1:
-            size_gb: 10
-            type: thin
-            datastore: storage001
-            folder: production/customerA/lamp
-        vm_nic:
-            nic1:
-            type: vmxnet3
-            network: VM Network
-            network_type: standard
-        vm_hardware:
+  connection: local
+  vars:
+    vcenter_hostname: 192.168.1.11
+    datastore: xvdstrlun01
+    network: "VM Network"
+  tasks:
+  - name: Create VM
+    vmware_guest:
+      validate_certs: False
+      hostname: "{{ vcenter_hostname }}"
+      username: root
+      password: Xvale123
+      name: testvm01
+      disk:
+        - size_gb: 10 
+          type: thin
+          datastore: xvdstrlun01
+      nic:
+        type: vmxnet3
+        network: "{{ network }}"
+        network_type: standard
+      hardware:
             memory_mb: 16000
             num_cpus: 4
             osid: centos64Guest
             scsi: paravirtual
         vm_cdrom:
             type: "iso"
-            iso_path: "DatastoreName/cd-image.iso"
-        esxi:
-            datacenter: 192.168.1.11
-            hostname: localhost.localdomain
+            iso_path: "[xvdstrlun01] ISO/rhel-server-7.4-x86_64-dvd.iso"

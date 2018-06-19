@@ -9,25 +9,25 @@
     network: "VM Network"
   tasks:
   - name: Create VM
-    vmware_guest:
+    vmsphere_guest:
       validate_certs: False
       hostname: "{{ vcenter_hostname }}"
       username: root
       password: Xvale123
       name: testvm01
-      disk:
+      vm_disk:
         size_gb: 10 
         type: thin
         datastore: xvdstrlun01
-      nic:
+      vm_nic:
         type: vmxnet3
         network: "{{ network }}"
         network_type: standard
-      hardware:
+      vm_hardware:
         memory_mb: 16000
         num_cpus: 4
         osid: centos64Guest
         scsi: paravirtual
-      cdrom:
+      vm_cdrom:
         type: "iso"
         iso_path: "[xvdstrlun01] ISO/rhel-server-7.4-x86_64-dvd.iso"

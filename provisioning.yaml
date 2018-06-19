@@ -8,8 +8,8 @@
     vmware_guest:
 #      validate_certs: false
       hostname: "{{ vcenter_host }}"
-      username: "{{ vcenter_username }}"
-      password: "{{ vcenter_password }}"
+      username: root
+      password: Xvale123
       datacenter: "{{ datacenter }}"
       name: "{{ name }}"
       template: "{{ vmtemplate }}"

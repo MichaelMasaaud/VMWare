@@ -4,10 +4,6 @@
   connection: local
 
   tasks:
-  - name: "INCLUDES | Include vaulted credentials"
-    include_vars: group_vars/vaulted.yml
-    no_log: true
-
   - name: "PROVISION | Create VM from template"
     vmware_guest:
 #      validate_certs: false

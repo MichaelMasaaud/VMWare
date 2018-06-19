@@ -17,10 +17,8 @@
       password: "{{ vcenter_password }}"
       datacenter: "{{ datacenter }}"
       name: "{{ name }}"
-      folder: "{{ folder }}"
       template: "{{ vmtemplate }}"
       state: poweredon
-      esxi_hostname: "{{ esxi_host }}"
       hardware:
         num_cpus: "{{ cpu }}"
         memory_mb: "{{ mem_mb }}"

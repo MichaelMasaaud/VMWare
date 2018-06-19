@@ -7,18 +7,16 @@
   - name: "PROVISION | Create VM from template"
     vmware_guest:
 #      validate_certs: false
-      hostname: "{{ vcenter_host }}"
+      hostname: 192.168.1.11
       username: root
       password: Xvale123
-      datacenter: "{{ datacenter }}"
-      name: "{{ name }}"
-      template: "{{ vmtemplate }}"
+      name: Ansible-Test01
+      template: master1
       state: poweredon
       hardware:
-        num_cpus: "{{ cpu }}"
-        memory_mb: "{{ mem_mb }}"
+        num_cpus: 4
+        memory_mb: 16000
       disk:
-        - size_gb: "{{ disk }}"
+        - size_gb: 100
           type: thin
-          datastore: "{{ datastore }}"
-      wait_for_ip_address: yes
+          datastore: xvdstrlun01
